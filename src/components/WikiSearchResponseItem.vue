@@ -53,7 +53,9 @@ a {
 }
 
 .title {
+  line-height: 1;
   font-weight: bolder;
-  font-size: x-large;
+  font-size: large;
+  margin-bottom: 5px;
 }
 </style>
