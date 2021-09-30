@@ -1,9 +1,7 @@
 <template>
   <div>
 
-    <WikiSearchResponse
-        :searchResponse="searchResponse"
-    />
+    <WikiSearchPageList :pages="pages"/>
 
     <div class="searchbox">
       <form @submit.prevent="searchWiki()">
@@ -14,14 +12,14 @@
 </template>
 
 <script>
-import WikiSearchResponse from "@/components/WikiSearchResponse";
+import WikiSearchPageList from "@/components/WikiSearchPageList";
 
 export default {
   name: "WikiSearchWidget",
   data() {
     return {
       query: "",
-      searchResponse: [],
+      pages: [],
     }
   },
   methods: {
@@ -31,15 +29,15 @@ export default {
 
       fetch(endpoint)
         .then(response => response.json())
-        .then(data => this.searchResponse = data.pages)
+        .then(data => this.pages = data.pages)
         .catch(error => {
-          this.searchResponse = []
+          this.pages = []
           console.error('Error:', error);
         })
     },
   },
   components: {
-    WikiSearchResponse,
+    WikiSearchPageList,
   },
 }
 </script>
